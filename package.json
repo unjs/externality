@@ -12,7 +12,9 @@
   "scripts": {
     "build": "siroc build",
     "lint": "eslint --ext .js,.ts .",
-    "test": "yarn lint && jest"
+    "test": "yarn lint && jest",
+    "prepublishOnly": "yarn build",
+    "release": "yarn test && standard-version && git push --follow-tags && npm publish"
   },
   "dependencies": {
     "allowlist": "^0.1.1",
@@ -28,6 +30,7 @@
     "jest": "^27.0.4",
     "rollup": "^2.51.0",
     "siroc": "^0.11.0",
+    "standard-version": "^9.3.0",
     "ts-jest": "^27.0.3",
     "webpack": "^5.38.1"
   }
