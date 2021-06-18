@@ -8,7 +8,10 @@
     }
   },
   "main": "./dist/index.cjs",
-  "types": "./dist/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "siroc build",
     "lint": "eslint --ext .js,.ts .",
