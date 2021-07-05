@@ -50,7 +50,7 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
   }
 
   // Resolve id
-  const r = ctx.resolved = await resolveId(id, importer)
+  const r = ctx.resolved = await resolveId(id, importer, opts.resolve)
 
   // Inline filter on resolved id and path
   if (matches(r.id, opts.inline, ctx) || matches(r.path, opts.inline, ctx)) {
