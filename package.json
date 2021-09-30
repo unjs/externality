@@ -1,6 +1,7 @@
 {
   "name": "externality",
   "version": "0.0.2",
+  "license": "MIT",
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
@@ -21,20 +22,20 @@
   },
   "dependencies": {
     "allowlist": "^0.1.1",
-    "enhanced-resolve": "^5.8.2",
-    "ufo": "^0.7.5",
+    "enhanced-resolve": "^5.8.3",
+    "ufo": "^0.7.9",
     "upath": "^2.0.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^6.0.1",
-    "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.1",
-    "eslint": "^7.28.0",
-    "jest": "^27.0.4",
-    "rollup": "^2.51.0",
-    "siroc": "^0.11.0",
-    "standard-version": "^9.3.0",
-    "ts-jest": "^27.0.3",
-    "webpack": "^5.38.1"
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.10.2",
+    "eslint": "^7.32.0",
+    "jest": "^27.2.4",
+    "rollup": "^2.57.0",
+    "siroc": "^0.16.0",
+    "standard-version": "^9.3.1",
+    "ts-jest": "^27.0.5",
+    "webpack": "^5.55.1"
   }
 }
