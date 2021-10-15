@@ -60,6 +60,11 @@ export async function resolveId (id: string, base: string = '.', opts: ResolveOp
     }
   }
 
+  //  The argument 'path' must be a string or Uint8Array without null bytes.
+  if (base.includes('\x00')) {
+    base = opts.roots?.[0] || '.'
+  }
+
   // https://github.com/webpack/enhanced-resolve
   const _resolve: (base: string, id: string) =>
     Promise<string> = promisify(enhancedResolve.create(opts))

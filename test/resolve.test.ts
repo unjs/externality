@@ -73,13 +73,19 @@ describe('resolveId', () => {
       output: {
         type: 'unknown'
       }
+    },
+    {
+      input: ['esm', '\x00virtual:#polyfill', { roots: [fixtureDir] }],
+      output: {
+        path: r('node_modules/esm/index.js')
+      }
     }
   ]
 
   for (const item of inputs) {
     test(`'resolveId(${item.input.map(i => JSON.stringify(i)).join(', ')}) => ${JSON.stringify(item.output)}`, async () => {
       // @ts-ignore
-      expect(await resolveId(...item.input)).toMatchObject(item.output)
+      expect(await resolveId(...item.input).catch(console.log)).toMatchObject(item.output)
     })
   }
 })

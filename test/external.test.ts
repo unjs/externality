@@ -27,6 +27,10 @@ describe('isExternal', () => {
     {
       input: ['esm', fixtureDir],
       output: null
+    },
+    {
+      input: ['esm', '\x00virtual:#polyfill', { resolve: { roots: [fixtureDir] } }],
+      output: null
     }
   ]
 
