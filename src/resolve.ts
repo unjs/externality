@@ -1,13 +1,13 @@
 import { fileURLToPath } from 'url'
 import { promisify } from 'util'
 import { hasProtocol } from 'ufo'
-import * as enhancedResolve from 'enhanced-resolve'
-import type { ResolveOptions as _ResolveOptions } from 'enhanced-resolve'
+import enhancedResolve from 'enhanced-resolve'
+import type { ResolveOptions as EnhancedResolveOptions } from 'enhanced-resolve'
 import { isBuiltin, getType, Matcher } from './utils'
 
 export type ModuleType = 'commonjs' | 'module' | 'unknown'
 
-export interface ResolveOptions extends Partial<_ResolveOptions> {
+export interface ResolveOptions extends Partial<EnhancedResolveOptions> {
   /**
    * Whether to resolve esm or cjs by default
    * @default 'commonjs'
