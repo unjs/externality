@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/unjs/externality/compare/v0.0.3...v0.0.4) (2021-10-15)
+
+
+### Bug Fixes
+
+* import default export from `enhanced-resolve` ([838e691](https://github.com/unjs/externality/commit/838e691b05877014da6b89cd896146d3e4a87a56))
+
 ### [0.0.3](https://github.com/unjs/externality/compare/v0.0.2...v0.0.3) (2021-10-15)
 
 
