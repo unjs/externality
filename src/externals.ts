@@ -32,6 +32,8 @@ export const ExternalsDefaults: ExternalsOptions = {
   resolve: {}
 }
 
+export const toPathRegExp = (pattern: string | RegExp) => pattern instanceof RegExp ? pattern : new RegExp(`([\\/]|^)${pattern}([\\/]|$)`)
+
 export async function isExternal (id: string, importer: string, opts: ExternalsOptions = {}): Promise<null | { id: string, external: true}> {
   // Apply defaults
   opts = { ...ExternalsDefaults, ...opts }
