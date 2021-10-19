@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/unjs/externality/compare/v0.0.4...v0.0.5) (2021-10-19)
+
+
+### Features
+
+* expose `toPathRegExp` utility ([f2bf6c2](https://github.com/unjs/externality/commit/f2bf6c2a59934319f3f92f205e8adc08ee738cca))
+
 ### [0.0.4](https://github.com/unjs/externality/compare/v0.0.3...v0.0.4) (2021-10-15)
 
 
