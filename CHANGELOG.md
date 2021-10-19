@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/unjs/externality/compare/v0.0.5...v0.1.0) (2021-10-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* External `inline` and `external` options will now be converted from strings -> RE. For previous string behaviour (positive for any string included in an id), just pass an unbounded RE, such as `/\?/`
+
+* also fix incorrect type in ResolvedId
+
+* convert all strings to RE (in `inline` and `external` opts) ([0166d70](https://github.com/unjs/externality/commit/0166d7033410bb7c47503fec7ac4c9e5ce2dd869))
+
 ### [0.0.5](https://github.com/unjs/externality/compare/v0.0.4...v0.0.5) (2021-10-19)
 
 
