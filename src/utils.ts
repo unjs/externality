@@ -1,13 +1,10 @@
 import { builtinModules } from 'module'
 import type { ModuleType } from './resolve'
 
-export type Matcher<T = any> = RegExp | string | ((input: string, ctx?: T) => boolean)
+export type Matcher<T = any> = RegExp | ((input: string, ctx?: T) => boolean)
 
 export function matches <T = any> (input: string, matchers: Matcher<T>[], ctx?: T) {
   return matchers.some((matcher) => {
-    if (typeof matcher === 'string') {
-      return input.includes(matcher)
-    }
     if (matcher instanceof RegExp) {
       return matcher.test(input)
     }
@@ -16,6 +13,13 @@ export function matches <T = any> (input: string, matchers: Matcher<T>[], ctx?: 
     }
     return false
   })
+}
+
+/* eslint-disable no-redeclare */
+export function toMatcher (pattern: string): RegExp
+export function toMatcher<T> (pattern: Matcher<T>): Matcher<T>
+export function toMatcher (pattern: any) {
+  return typeof pattern === 'string' ? new RegExp(`([\\/]|^)${pattern}([\\/]|$)`) : pattern
 }
 
 export function isBuiltin (id: string = '') {

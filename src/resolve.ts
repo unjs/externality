@@ -3,7 +3,7 @@ import { promisify } from 'util'
 import { hasProtocol } from 'ufo'
 import enhancedResolve from 'enhanced-resolve'
 import type { ResolveOptions as EnhancedResolveOptions } from 'enhanced-resolve'
-import { isBuiltin, getType, Matcher } from './utils'
+import { isBuiltin, getType } from './utils'
 
 export type ModuleType = 'commonjs' | 'module' | 'unknown'
 
@@ -18,7 +18,7 @@ export interface ResolveOptions extends Partial<EnhancedResolveOptions> {
 export interface ResolvedId {
   id: string
   path: string
-  type?: Matcher
+  type?: ModuleType
   external?: boolean
 }
 
