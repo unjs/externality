@@ -85,6 +85,7 @@ describe('resolveId', () => {
   for (const item of inputs) {
     test(`'resolveId(${item.input.map(i => JSON.stringify(i)).join(', ')}) => ${JSON.stringify(item.output)}`, async () => {
       // @ts-ignore
+      // eslint-disable-next-line no-console
       expect(await resolveId(...item.input).catch(console.log)).toMatchObject(item.output)
     })
   }
