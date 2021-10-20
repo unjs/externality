@@ -43,7 +43,7 @@ export const ExternalsDefaults: ExternalsOptions = {
 
 const ProtocolRegex = /^(?<proto>.+):.+$/
 
-export async function isExternal(id: string, importer: string, opts: ExternalsOptions = {}): Promise<null | { id: string, external: true }> {
+export async function isExternal (id: string, importer: string, opts: ExternalsOptions = {}): Promise<null | { id: string, external: true }> {
   // Apply defaults
   opts = { ...ExternalsDefaults, ...opts }
 
