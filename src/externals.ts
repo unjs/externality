@@ -12,6 +12,13 @@ export interface ExternalsOptions {
    */
   external?: Array<string | Matcher>
   /**
+   * Protocols that are allowed to be externalized.
+   * Any other matched protocol will be inlined.
+   *
+   * Default: ['node', 'fs', 'data']
+   */
+  externalProtocols?: Array<string>
+  /**
    * Resolve options (passed directly to [`enhanced-resolve`](https://github.com/webpack/enhanced-resolve))
    */
   resolve?: Partial<ResolveOptions>
@@ -30,10 +37,13 @@ export const ExternalsDefaults: ExternalsOptions = {
     /\?/
   ],
   external: [],
+  externalProtocols: ['node', 'fs', 'data'],
   resolve: {}
 }
 
-export async function isExternal (id: string, importer: string, opts: ExternalsOptions = {}): Promise<null | { id: string, external: true}> {
+const ProtocolRegex = /^(?<proto>.+):.+$/
+
+export async function isExternal(id: string, importer: string, opts: ExternalsOptions = {}): Promise<null | { id: string, external: true }> {
   // Apply defaults
   opts = { ...ExternalsDefaults, ...opts }
 
@@ -51,6 +61,12 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
   // External filter on original id
   if (matches(id, externalMatchers, ctx)) {
     return { id, external: true }
+  }
+
+  // Inline not allowed protocols
+  const proto = id.match(ProtocolRegex)
+  if (proto && !opts.externalProtocols.find(p => p === proto.groups.proto)) {
+    return null
   }
 
   // Resolve id
