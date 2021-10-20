@@ -65,7 +65,7 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
 
   // Inline not allowed protocols
   const proto = id.match(ProtocolRegex)
-  if (proto && !opts.externalProtocols.find(p => p === proto.groups.proto)) {
+  if (proto && !opts.externalProtocols.includes(proto.groups.proto)) {
     return null
   }
 
