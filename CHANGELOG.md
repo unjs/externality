@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/unjs/externality/compare/v0.1.0...v0.1.1) (2021-10-20)
+
+
+### Features
+
+* support `externalProtocols` ([#2](https://github.com/unjs/externality/issues/2)) ([47f47c2](https://github.com/unjs/externality/commit/47f47c2456690652c07b0a26d7fbfee0bd92750b))
+
 ## [0.1.0](https://github.com/unjs/externality/compare/v0.0.5...v0.1.0) (2021-10-19)
 
 
