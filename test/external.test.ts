@@ -31,6 +31,14 @@ describe('isExternal', () => {
     {
       input: ['esm', '\x00virtual:#polyfill', { resolve: { roots: [fixtureDir] } }],
       output: null
+    },
+    {
+      input: ['virtual:foo', fixtureDir],
+      output: null
+    },
+    {
+      input: ['node:fs', fixtureDir],
+      output: { id: 'fs', external: true }
     }
   ]
 
