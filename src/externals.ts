@@ -67,11 +67,6 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
     return null
   }
 
-  // External filter on original id
-  if (matches(id, externalMatchers, ctx)) {
-    return { id, external: true }
-  }
-
   // Inline not allowed protocols
   const proto = id.match(ProtocolRegex)
   if (proto && !opts.externalProtocols.includes(proto.groups.proto)) {
@@ -79,7 +74,9 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
   }
 
   // Resolve id
-  const r = ctx.resolved = await resolveId(id, importer, opts.resolve)
+  const r = ctx.resolved = await resolveId(id, importer, opts.resolve).catch((_err) => {
+    return { id, path: id, external: null }
+  })
 
   // Inline not allowed extensions
   const idExt = extname(r.path)
@@ -93,7 +90,12 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
   }
 
   // Check if resolved is external
-  if (r.external || matches(r.id, externalMatchers, ctx) || matches(r.path, externalMatchers, ctx)) {
+  if (
+    r.external ||
+    matches(id, externalMatchers, ctx) ||
+    matches(r.id, externalMatchers, ctx) ||
+    matches(r.path, externalMatchers, ctx)
+  ) {
     return { id: r.id, external: true }
   }
 
