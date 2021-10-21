@@ -1,3 +1,4 @@
+import { extname } from 'path'
 import type { ResolveOptions } from './resolve'
 import { Matcher, matches, toMatcher } from './utils'
 import { resolveId } from './resolve'
@@ -19,6 +20,13 @@ export interface ExternalsOptions {
    */
   externalProtocols?: Array<string>
   /**
+   * Extensions that are allowed to be externalized.
+   * Any other matched extension will be inlined.
+   *
+   * Default: ['.js', '.mjs', '.cjs', '.node']
+   */
+  externalExtensions?: Array<string>
+  /**
    * Resolve options (passed directly to [`enhanced-resolve`](https://github.com/webpack/enhanced-resolve))
    */
   resolve?: Partial<ResolveOptions>
@@ -38,6 +46,7 @@ export const ExternalsDefaults: ExternalsOptions = {
   ],
   external: [],
   externalProtocols: ['node', 'fs', 'data'],
+  externalExtensions: ['.js', '.mjs', '.cjs', '.node'],
   resolve: {}
 }
 
@@ -66,6 +75,12 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
   // Inline not allowed protocols
   const proto = id.match(ProtocolRegex)
   if (proto && !opts.externalProtocols.includes(proto.groups.proto)) {
+    return null
+  }
+
+  // Inline not allowed extensions
+  const idExt = extname(id)
+  if (idExt && !opts.externalExtensions.includes(idExt)) {
     return null
   }
 
