@@ -78,14 +78,14 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
     return null
   }
 
+  // Resolve id
+  const r = ctx.resolved = await resolveId(id, importer, opts.resolve)
+
   // Inline not allowed extensions
-  const idExt = extname(id)
+  const idExt = extname(r.path)
   if (idExt && !opts.externalExtensions.includes(idExt)) {
     return null
   }
-
-  // Resolve id
-  const r = ctx.resolved = await resolveId(id, importer, opts.resolve)
 
   // Inline filter on resolved id and path
   if (matches(r.id, inlineMatchers, ctx) || matches(r.path, inlineMatchers, ctx)) {

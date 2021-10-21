@@ -45,6 +45,10 @@ describe('isExternal', () => {
       output: { id: 'esm/index.js', external: true }
     },
     {
+      input: ['esm/styles', fixtureDir, { external: ['node_modules'] }],
+      output: null
+    },
+    {
       input: ['esm/styles.css', fixtureDir, { external: ['node_modules'] }],
       output: null
     }
