@@ -1,4 +1,4 @@
-import { extname } from 'path'
+import { extname } from 'pathe'
 import type { ResolveOptions } from './resolve'
 import { Matcher, matches, toMatcher } from './utils'
 import { resolveId } from './resolve'
