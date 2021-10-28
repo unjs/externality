@@ -16,9 +16,9 @@
   "scripts": {
     "build": "siroc build",
     "lint": "eslint --ext .js,.ts .",
-    "test": "yarn lint && jest",
     "prepublishOnly": "yarn build",
-    "release": "yarn test && standard-version && git push --follow-tags && npm publish"
+    "release": "yarn test && standard-version && git push --follow-tags && npm publish",
+    "test": "yarn lint && jest"
   },
   "dependencies": {
     "allowlist": "^0.1.1",

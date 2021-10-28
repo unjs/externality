@@ -1,8 +1,9 @@
-import * as upath from 'upath'
+import { pathToFileURL } from 'url'
+import { resolve } from 'pathe'
 import { isExternal } from '../src/externals'
 
-const fixtureDir = upath.resolve(__dirname, 'fixture')
-// const r = (...p) => upath.resolve(fixtureDir, ...p)
+const fixtureDir = resolve(__dirname, 'fixture')
+const r = (...p) => resolve(fixtureDir, ...p)
 
 describe('isExternal', () => {
   const inputs: Array<{ input: Parameters<typeof isExternal>, output: any }> = [
@@ -35,6 +36,20 @@ describe('isExternal', () => {
       input: ['esm/index.js', fixtureDir, { external: ['node_modules'] }],
       output: {
         id: 'esm/index.js',
+        external: true
+      }
+    },
+    {
+      input: [pathToFileURL(r('node_modules/esm')).href, fixtureDir, { external: ['node_modules'] }],
+      output: {
+        id: r('node_modules/esm'),
+        external: true
+      }
+    },
+    {
+      input: ['data:text/javascript,console.log("hello!");', fixtureDir, { external: ['node_modules'] }],
+      output: {
+        id: 'data:text/javascript,console.log("hello!");',
         external: true
       }
     },

@@ -2,6 +2,13 @@ import type { ModuleType } from './resolve'
 
 export type Matcher<T = any> = RegExp | ((input: string, ctx?: T) => boolean)
 
+const ProtocolRegex = /^(?<proto>.+):.+$/
+
+export function getProtocol (id: string): string | null {
+  const proto = id.match(ProtocolRegex)
+  return proto ? proto.groups.proto : null
+}
+
 export function matches <T = any> (input: string, matchers: Matcher<T>[], ctx?: T) {
   return matchers.some((matcher) => {
     if (matcher instanceof RegExp) {
