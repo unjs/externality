@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/unjs/externality/compare/v0.1.3...v0.1.4) (2021-10-28)
+
+
+### Features
+
+* detect invalid node imports ([#4](https://github.com/unjs/externality/issues/4)) ([114f1d6](https://github.com/unjs/externality/commit/114f1d6ad947fe0da2c472c65e73592ec983c6a2))
+
 ### [0.1.3](https://github.com/unjs/externality/compare/v0.1.2...v0.1.3) (2021-10-21)
 
 
