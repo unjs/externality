@@ -2,8 +2,9 @@ import { fileURLToPath } from 'url'
 import { promisify } from 'util'
 import { hasProtocol } from 'ufo'
 import enhancedResolve from 'enhanced-resolve'
+import { isNodeBuiltin } from 'mlly'
 import type { ResolveOptions as EnhancedResolveOptions } from 'enhanced-resolve'
-import { isBuiltin, getType } from './utils'
+import { getType } from './utils'
 
 export type ModuleType = 'commonjs' | 'module' | 'unknown'
 
@@ -51,7 +52,7 @@ export async function resolveId (id: string, base: string = '.', opts: ResolveOp
     }
   }
 
-  if (isBuiltin(id)) {
+  if (isNodeBuiltin(id)) {
     return {
       id: id.replace(/^node:/, ''),
       path: id,

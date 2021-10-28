@@ -16,13 +16,14 @@
   "scripts": {
     "build": "siroc build",
     "lint": "eslint --ext .js,.ts .",
-    "test": "yarn lint && jest",
     "prepublishOnly": "yarn build",
-    "release": "yarn test && standard-version && git push --follow-tags && npm publish"
+    "release": "yarn test && standard-version && git push --follow-tags && npm publish",
+    "test": "yarn lint && jest"
   },
   "dependencies": {
     "allowlist": "^0.1.1",
     "enhanced-resolve": "^5.8.3",
+    "mlly": "^0.3.10",
     "pathe": "^0.2.0",
     "ufo": "^0.7.9"
   },

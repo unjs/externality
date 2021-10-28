@@ -1,7 +1,13 @@
-import { builtinModules } from 'module'
 import type { ModuleType } from './resolve'
 
 export type Matcher<T = any> = RegExp | ((input: string, ctx?: T) => boolean)
+
+const ProtocolRegex = /^(?<proto>.+):.+$/
+
+export function getProtocol (id: string): string | null {
+  const proto = id.match(ProtocolRegex)
+  return proto ? proto.groups.proto : null
+}
 
 export function matches <T = any> (input: string, matchers: Matcher<T>[], ctx?: T) {
   return matchers.some((matcher) => {
@@ -20,12 +26,6 @@ export function toMatcher (pattern: string): RegExp
 export function toMatcher<T> (pattern: Matcher<T>): Matcher<T>
 export function toMatcher (pattern: any) {
   return typeof pattern === 'string' ? new RegExp(`([\\/]|^)${pattern}([\\/]|$)`) : pattern
-}
-
-export function isBuiltin (id: string = '') {
-  // node:fs/promises => fs
-  id = id.replace(/^node:/, '').split('/')[0]
-  return builtinModules.includes(id)
 }
 
 export function getType (id: string, fallback: ModuleType = 'commonjs'): ModuleType {

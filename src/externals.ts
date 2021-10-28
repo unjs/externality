@@ -1,6 +1,7 @@
 import { extname } from 'pathe'
+import { isValidNodeImport } from 'mlly'
 import type { ResolveOptions } from './resolve'
-import { Matcher, matches, toMatcher } from './utils'
+import { getProtocol, Matcher, matches, toMatcher } from './utils'
 import { resolveId } from './resolve'
 
 export interface ExternalsOptions {
@@ -16,7 +17,7 @@ export interface ExternalsOptions {
    * Protocols that are allowed to be externalized.
    * Any other matched protocol will be inlined.
    *
-   * Default: ['node', 'fs', 'data']
+   * Default: ['node', 'file', 'data']
    */
   externalProtocols?: Array<string>
   /**
@@ -30,6 +31,11 @@ export interface ExternalsOptions {
    * Resolve options (passed directly to [`enhanced-resolve`](https://github.com/webpack/enhanced-resolve))
    */
   resolve?: Partial<ResolveOptions>
+  /**
+   * Try to automatically detect and inline invalid node imports
+   * matching file name (at first) and then loading code.
+   */
+  detectInvalidNodeImports?: boolean
 }
 
 export const ExternalsDefaults: ExternalsOptions = {
@@ -45,12 +51,11 @@ export const ExternalsDefaults: ExternalsOptions = {
     /\?/
   ],
   external: [],
-  externalProtocols: ['node', 'fs', 'data'],
+  externalProtocols: ['node', 'file', 'data'],
   externalExtensions: ['.js', '.mjs', '.cjs', '.node'],
-  resolve: {}
+  resolve: {},
+  detectInvalidNodeImports: true
 }
-
-const ProtocolRegex = /^(?<proto>.+):.+$/
 
 export async function isExternal (id: string, importer: string, opts: ExternalsOptions = {}): Promise<null | { id: string, external: true }> {
   // Apply defaults
@@ -68,9 +73,13 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
   }
 
   // Inline not allowed protocols
-  const proto = id.match(ProtocolRegex)
-  if (proto && !opts.externalProtocols.includes(proto.groups.proto)) {
+  const proto = getProtocol(id)
+  if (proto && !opts.externalProtocols.includes(proto)) {
     return null
+  }
+
+  if (proto === 'data') {
+    return { id, external: true }
   }
 
   // Resolve id
@@ -96,6 +105,11 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
     matches(r.id, externalMatchers, ctx) ||
     matches(r.path, externalMatchers, ctx)
   ) {
+    // Inline invalid node imports
+    if (opts.detectInvalidNodeImports && !await isValidNodeImport(r.path)) {
+      return null
+    }
+
     return { id: r.id, external: true }
   }
 
