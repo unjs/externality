@@ -1,4 +1,5 @@
 import { extname } from 'pathe'
+import { isValidNodeImport } from 'mlly'
 import type { ResolveOptions } from './resolve'
 import { Matcher, matches, toMatcher } from './utils'
 import { resolveId } from './resolve'
@@ -30,6 +31,11 @@ export interface ExternalsOptions {
    * Resolve options (passed directly to [`enhanced-resolve`](https://github.com/webpack/enhanced-resolve))
    */
   resolve?: Partial<ResolveOptions>
+  /**
+   * Try to automatically detect and inline invalid node imports
+   * matching file name (at first) and then loading code.
+   */
+  detectInvalidNodeImports?: boolean
 }
 
 export const ExternalsDefaults: ExternalsOptions = {
@@ -47,7 +53,8 @@ export const ExternalsDefaults: ExternalsOptions = {
   external: [],
   externalProtocols: ['node', 'fs', 'data'],
   externalExtensions: ['.js', '.mjs', '.cjs', '.node'],
-  resolve: {}
+  resolve: {},
+  detectInvalidNodeImports: false
 }
 
 const ProtocolRegex = /^(?<proto>.+):.+$/
@@ -86,6 +93,11 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
 
   // Inline filter on resolved id and path
   if (matches(r.id, inlineMatchers, ctx) || matches(r.path, inlineMatchers, ctx)) {
+    return null
+  }
+
+  // Inline invalid node imports
+  if (opts.detectInvalidNodeImports && !await isValidNodeImport(r.path)) {
     return null
   }
 

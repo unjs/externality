@@ -3754,6 +3754,11 @@ mkdist@^0.3.3:
     upath "^2.0.1"
     vue-template-compiler "^2.6.14"
 
+mlly@^0.3.9:
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.3.9.tgz#555878ab991b12e5fd8eab67bb910239d099bb4f"
+  integrity sha512-hSWp1FKRHkTq5mLafSWvlb6XDDKxbgzRtPw7Mw5fN5h5iXYvaiJnxf8zJZ4G4GzBu91LxGjv8ROtH2SVvjMp9g==
+
 modify-values@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
