@@ -54,7 +54,7 @@ export const ExternalsDefaults: ExternalsOptions = {
   externalProtocols: ['node', 'fs', 'data'],
   externalExtensions: ['.js', '.mjs', '.cjs', '.node'],
   resolve: {},
-  detectInvalidNodeImports: false
+  detectInvalidNodeImports: true
 }
 
 const ProtocolRegex = /^(?<proto>.+):.+$/
