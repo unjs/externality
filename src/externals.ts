@@ -1,7 +1,7 @@
 import { extname } from 'pathe'
 import { isValidNodeImport } from 'mlly'
 import type { ResolveOptions } from './resolve'
-import { Matcher, matches, toMatcher } from './utils'
+import { Matcher, matches, toMatcher, isBuiltin } from './utils'
 import { resolveId } from './resolve'
 
 export interface ExternalsOptions {
@@ -104,7 +104,7 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
     matches(r.path, externalMatchers, ctx)
   ) {
     // Inline invalid node imports
-    if (opts.detectInvalidNodeImports && !await isValidNodeImport(r.path)) {
+    if (opts.detectInvalidNodeImports && !isBuiltin(r.path) && !await isValidNodeImport(r.path)) {
       return null
     }
 

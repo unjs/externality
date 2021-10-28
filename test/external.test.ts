@@ -11,9 +11,16 @@ describe('isExternal', () => {
       output: null
     },
     {
-      input: ['vue', fixtureDir, { external: ['vue'] }],
+      input: ['vue', fixtureDir, { external: ['vue'], detectInvalidNodeImports: false }],
       output: {
         id: 'vue',
+        external: true
+      }
+    },
+    {
+      input: ['allowlist', fixtureDir, { external: ['allowlist'] }],
+      output: {
+        id: 'allowlist',
         external: true
       }
     },
@@ -23,6 +30,17 @@ describe('isExternal', () => {
         id: 'esm',
         external: true
       }
+    },
+    {
+      input: ['esm/index.js', fixtureDir, { external: ['node_modules'] }],
+      output: {
+        id: 'esm/index.js',
+        external: true
+      }
+    },
+    {
+      input: ['invalid', fixtureDir, { external: ['node_modules'] }],
+      output: null
     },
     {
       input: ['esm', fixtureDir],
