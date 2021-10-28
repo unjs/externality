@@ -96,11 +96,6 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
     return null
   }
 
-  // Inline invalid node imports
-  if (opts.detectInvalidNodeImports && !await isValidNodeImport(r.path)) {
-    return null
-  }
-
   // Check if resolved is external
   if (
     r.external ||
@@ -108,6 +103,11 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
     matches(r.id, externalMatchers, ctx) ||
     matches(r.path, externalMatchers, ctx)
   ) {
+    // Inline invalid node imports
+    if (opts.detectInvalidNodeImports && !await isValidNodeImport(r.path)) {
+      return null
+    }
+
     return { id: r.id, external: true }
   }
 
