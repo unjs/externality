@@ -1,7 +1,7 @@
 import { extname } from 'pathe'
 import { isValidNodeImport } from 'mlly'
 import type { ResolveOptions } from './resolve'
-import { Matcher, matches, toMatcher, isBuiltin } from './utils'
+import { Matcher, matches, toMatcher } from './utils'
 import { resolveId } from './resolve'
 
 export interface ExternalsOptions {

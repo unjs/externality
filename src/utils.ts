@@ -1,4 +1,3 @@
-import { builtinModules } from 'module'
 import type { ModuleType } from './resolve'
 
 export type Matcher<T = any> = RegExp | ((input: string, ctx?: T) => boolean)
@@ -20,12 +19,6 @@ export function toMatcher (pattern: string): RegExp
 export function toMatcher<T> (pattern: Matcher<T>): Matcher<T>
 export function toMatcher (pattern: any) {
   return typeof pattern === 'string' ? new RegExp(`([\\/]|^)${pattern}([\\/]|$)`) : pattern
-}
-
-export function isBuiltin (id: string = '') {
-  // node:fs/promises => fs
-  id = id.replace(/^node:/, '').split('/')[0]
-  return builtinModules.includes(id)
 }
 
 export function getType (id: string, fallback: ModuleType = 'commonjs'): ModuleType {
