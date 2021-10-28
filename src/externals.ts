@@ -104,7 +104,7 @@ export async function isExternal (id: string, importer: string, opts: ExternalsO
     matches(r.path, externalMatchers, ctx)
   ) {
     // Inline invalid node imports
-    if (opts.detectInvalidNodeImports && !isBuiltin(r.path) && !await isValidNodeImport(r.path)) {
+    if (opts.detectInvalidNodeImports && !await isValidNodeImport(r.path)) {
       return null
     }
 
