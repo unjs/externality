@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/unjs/externality/compare/v0.1.4...v0.1.5) (2021-11-02)
+
+
+### Bug Fixes
+
+* exclude windows drive letters from protocols ([8ea3fa9](https://github.com/unjs/externality/commit/8ea3fa947cfa0bdd9d503c9bf35f56841a9b68e0))
+
 ### [0.1.4](https://github.com/unjs/externality/compare/v0.1.3...v0.1.4) (2021-10-28)
 
 
