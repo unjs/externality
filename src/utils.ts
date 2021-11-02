@@ -2,7 +2,8 @@ import type { ModuleType } from './resolve'
 
 export type Matcher<T = any> = RegExp | ((input: string, ctx?: T) => boolean)
 
-const ProtocolRegex = /^(?<proto>.+):.+$/
+// 2+ letters, to exclude Windows drive letters
+const ProtocolRegex = /^(?<proto>.{2,}):.+$/
 
 export function getProtocol (id: string): string | null {
   const proto = id.match(ProtocolRegex)
