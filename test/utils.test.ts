@@ -13,4 +13,15 @@ describe('toMatcher', () => {
     const input = () => true
     expect(toMatcher(input)).toBe(input)
   })
+  it('does not match nested node_modules', () => {
+    const input = 'my-module'
+    expect(toMatcher(input).test('node_modules/my-module')).toBeTruthy()
+    expect(toMatcher(input).test('my-module')).toBeTruthy()
+    expect(
+      toMatcher(input).test('node_modules/my-module/index.js')
+    ).toBeTruthy()
+    expect(
+      toMatcher(input).test('node_modules/my-module/node_modules/other-module')
+    ).toBeFalsy()
+  })
 })

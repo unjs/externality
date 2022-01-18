@@ -26,7 +26,7 @@ export function matches <T = any> (input: string, matchers: Matcher<T>[], ctx?: 
 export function toMatcher (pattern: string): RegExp
 export function toMatcher<T> (pattern: Matcher<T>): Matcher<T>
 export function toMatcher (pattern: any) {
-  return typeof pattern === 'string' ? new RegExp(`([\\/]|^)${pattern}([\\/]|$)`) : pattern
+  return typeof pattern === 'string' ? new RegExp(`([\\/]|^)${pattern}([\\/](?!node_modules)|$)`) : pattern
 }
 
 export function getType (id: string, fallback: ModuleType = 'commonjs'): ModuleType {
