@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/unjs/externality/compare/v0.1.5...v0.1.6) (2022-01-18)
+
+
+### Bug Fixes
+
+* exclude nested `node_modules` from inline matcher ([#5](https://github.com/unjs/externality/issues/5)) ([2676ef4](https://github.com/unjs/externality/commit/2676ef4547508cd04c82d61797795e8f23c479c5))
+
 ### [0.1.5](https://github.com/unjs/externality/compare/v0.1.4...v0.1.5) (2021-11-02)
 
 
