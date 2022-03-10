@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/unjs/externality/compare/v0.1.6...v0.2.0) (2022-03-10)
+
+
+### Bug Fixes
+
+* handle pnpm-style paths ([16db4c7](https://github.com/unjs/externality/commit/16db4c7e6fb83e8427746c843a64a526a19ffe00))
+
 ### [0.1.6](https://github.com/unjs/externality/compare/v0.1.5...v0.1.6) (2022-01-18)
 
 
