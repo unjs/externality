@@ -25,7 +25,6 @@
     "test": "yarn lint && vitest run"
   },
   "dependencies": {
-    "allowlist": "^0.1.1",
     "enhanced-resolve": "^5.9.2",
     "mlly": "^0.4.3",
     "pathe": "^0.2.0",
@@ -34,6 +33,7 @@
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^8.0.0",
     "@types/node": "^17.0.21",
+    "allowlist": "^0.1.1",
     "eslint": "^8.10.0",
     "rollup": "^2.70.0",
     "standard-version": "^9.3.1",
