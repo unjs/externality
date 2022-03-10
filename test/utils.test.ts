@@ -24,4 +24,12 @@ describe('toMatcher', () => {
       toMatcher(input).test('node_modules/my-module/node_modules/other-module')
     ).toBeFalsy()
   })
+  it('matches namespaced paths', () => {
+    const input = '@namespace/my-module'
+    expect(toMatcher(input).test('node_modules/@namespace/my-module/dist/index.mjs')).toBeTruthy()
+  })
+  it('matches pnpm paths', () => {
+    const input = '@namespace/my-module'
+    expect(toMatcher(input).test('node_modules/.pnpm/@namespace+my-module@1.0.0/dist/index.mjs')).toBeTruthy()
+  })
 })

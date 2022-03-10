@@ -26,7 +26,10 @@ export function matches <T = any> (input: string, matchers: Matcher<T>[], ctx?: 
 export function toMatcher (pattern: string): RegExp
 export function toMatcher<T> (pattern: Matcher<T>): Matcher<T>
 export function toMatcher (pattern: any) {
-  return typeof pattern === 'string' ? new RegExp(`([\\/]|^)${pattern}([\\/](?!node_modules)|$)`) : pattern
+  if (typeof pattern !== 'string') { return pattern }
+
+  pattern = pattern.replace(/\//g, '[\\\\/+]')
+  return new RegExp(`([\\/]|^)${pattern}(@[^\\/]*)?([\\/](?!node_modules)|$)`)
 }
 
 export function getType (id: string, fallback: ModuleType = 'commonjs'): ModuleType {
