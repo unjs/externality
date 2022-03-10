@@ -1,4 +1,5 @@
 import { pathToFileURL } from 'url'
+import { describe, test, expect } from 'vitest'
 import { resolve } from 'pathe'
 import { isExternal } from '../src/externals'
 

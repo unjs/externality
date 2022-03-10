@@ -1,8 +1,9 @@
-import * as upath from 'upath'
+import { describe, test, expect } from 'vitest'
+import * as pathe from 'pathe'
 import { resolveId } from '../src'
 
-const fixtureDir = upath.resolve(__dirname, 'fixture')
-const r = (...p) => upath.resolve(fixtureDir, ...p)
+const fixtureDir = pathe.resolve(__dirname, 'fixture')
+const r = (...p) => pathe.resolve(fixtureDir, ...p)
 
 describe('resolveId', () => {
   const inputs: Array<{ input: Parameters<typeof resolveId>, output: any }> = [
