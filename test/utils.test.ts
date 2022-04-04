@@ -26,11 +26,10 @@ describe('toMatcher', () => {
     ).toBeFalsy()
   })
   it('matches namespaced paths', () => {
-    const input = '@namespace/my-module'
-    expect(toMatcher(input).test('node_modules/@namespace/my-module/dist/index.mjs')).toBeTruthy()
+    expect(toMatcher('@namespace/my-module').test('node_modules/@namespace/my-module/dist/index.mjs')).toBeTruthy()
   })
   it('matches pnpm paths', () => {
-    const input = '@namespace/my-module'
-    expect(toMatcher(input).test('node_modules/.pnpm/@namespace+my-module@1.0.0/dist/index.mjs')).toBeTruthy()
+    expect(toMatcher('@namespace/my-module').test('node_modules/.pnpm/@namespace+my-module@1.0.0/@namespace/my-module/dist/index.mjs')).toBeTruthy()
+    expect(toMatcher('@namespace/my-module').test('/tmp/node_modules/.pnpm/@namespace+my-module@1.0.0-27484505.9f6eff7/node_modules/@namespace/my-module/dist/index.mjs')).toBeTruthy()
   })
 })
