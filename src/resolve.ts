@@ -36,6 +36,15 @@ export async function resolveId (id: string, base: string = '.', opts: ResolveOp
     opts.conditionNames = [opts.type === 'commonjs' ? 'require' : 'import']
   }
 
+  if (isNodeBuiltin(id)) {
+    return {
+      id: id.replace(/^node:/, ''),
+      path: id,
+      type: opts.type,
+      external: true
+    }
+  }
+
   // Normalize id with file protocol
   if (id.startsWith('file:/')) {
     // is file URL
@@ -48,15 +57,6 @@ export async function resolveId (id: string, base: string = '.', opts: ResolveOp
       id: url.href,
       path: url.pathname,
       type: getType(id, opts.type),
-      external: true
-    }
-  }
-
-  if (isNodeBuiltin(id)) {
-    return {
-      id: id.replace(/^node:/, ''),
-      path: id,
-      type: opts.type,
       external: true
     }
   }
