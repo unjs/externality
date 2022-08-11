@@ -39,7 +39,7 @@
     "rollup": "^2.77.3",
     "standard-version": "^9.3.2",
     "unbuild": "^0.8.7",
-    "vite": "^2.9.14",
+    "vite": "^3.0.5",
     "vitest": "^0.21.1",
     "webpack": "^5.74.0"
   },
