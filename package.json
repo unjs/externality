@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "enhanced-resolve": "^5.10.0",
-    "mlly": "^0.5.9",
+    "mlly": "^0.5.10",
     "pathe": "^0.3.4",
     "ufo": "^0.8.5"
   },
@@ -38,7 +38,7 @@
     "eslint": "^8.21.0",
     "rollup": "^2.77.3",
     "standard-version": "^9.3.2",
-    "unbuild": "^0.8.7",
+    "unbuild": "^0.8.8",
     "vite": "^2.9.14",
     "vitest": "^0.21.1",
     "webpack": "^5.74.0"
