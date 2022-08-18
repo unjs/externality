@@ -26,22 +26,23 @@
   },
   "dependencies": {
     "enhanced-resolve": "^5.10.0",
-    "mlly": "^0.5.12",
-    "pathe": "^0.3.4",
+    "mlly": "^0.5.13",
+    "pathe": "^0.3.5",
     "ufo": "^0.8.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@types/node": "^17.0.41",
+    "@vitest/coverage-c8": "^0.22.1",
     "allowlist": "^0.1.1",
     "c8": "^7.12.0",
-    "eslint": "^8.21.0",
-    "rollup": "^2.77.3",
+    "eslint": "^8.22.0",
+    "rollup": "^2.78.0",
     "standard-version": "^9.3.2",
     "typescript": "^4.7.4",
     "unbuild": "^0.8.8",
     "vite": "^2.9.15",
-    "vitest": "^0.21.1",
+    "vitest": "^0.22.1",
     "webpack": "^5.74.0"
   },
   "build": {
@@ -49,5 +50,5 @@
       "rollup"
     ]
   },
-  "packageManager": "pnpm@7.9.0"
+  "packageManager": "pnpm@7.9.3"
 }
