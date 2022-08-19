@@ -37,7 +37,7 @@
     "allowlist": "^0.1.1",
     "c8": "^7.12.0",
     "eslint": "^8.22.0",
-    "rollup": "^2.78.0",
+    "rollup": "^2.78.1",
     "standard-version": "^9.3.2",
     "typescript": "^4.7.4",
     "unbuild": "^0.8.9",
