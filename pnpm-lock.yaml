@@ -8,7 +8,7 @@ specifiers:
   c8: ^7.12.0
   enhanced-resolve: ^5.10.0
   eslint: ^8.23.1
-  mlly: ^0.5.15
+  mlly: ^0.5.16
   pathe: ^0.3.8
   rollup: ^2.79.0
   standard-version: ^9.3.2
@@ -21,7 +21,7 @@ specifiers:
 
 dependencies:
   enhanced-resolve: 5.10.0
-  mlly: 0.5.15
+  mlly: 0.5.16
   pathe: 0.3.8
   ufo: 0.8.5
 
@@ -3267,8 +3267,8 @@ packages:
       typescript: 4.8.3
     dev: true
 
-  /mlly/0.5.15:
-    resolution: {integrity: sha512-cA1DS4Va2t0h/1c044haUDubeWwlKrvToLbOT3Oprpr2tW5dJTObEIXDdONRN/ahKm0GWEPVeptbg0dlzl8gBQ==}
+  /mlly/0.5.16:
+    resolution: {integrity: sha512-LaJ8yuh4v0zEmge/g3c7jjFlhoCPfQn6RCjXgm9A0Qiuochq4BcuOxVfWmdnCoLTlg2MV+hqhOek+W2OhG0Lwg==}
     dependencies:
       acorn: 8.8.0
       pathe: 0.3.8
@@ -3549,7 +3549,7 @@ packages:
     resolution: {integrity: sha512-s214f/xkRpwlwVBToWq9Mu0XlU3HhZMYCnr2var8+jjbavBHh/VCh4pBLsJW29rJ//B1jb4HlpMIaNIMH+W2/w==}
     dependencies:
       jsonc-parser: 3.2.0
-      mlly: 0.5.15
+      mlly: 0.5.16
       pathe: 0.3.8
     dev: true
 
@@ -3557,7 +3557,7 @@ packages:
     resolution: {integrity: sha512-VkxCBFVgQhNHYk9subx+HOhZ4jzynH11ah63LZsprTKwPCWG9pfWBlkElWFbvkP9BVR0dP1jS9xPdhaHQNK74Q==}
     dependencies:
       jsonc-parser: 3.2.0
-      mlly: 0.5.15
+      mlly: 0.5.16
       pathe: 0.3.8
 
   /pluralize/8.0.0:
@@ -4299,7 +4299,7 @@ packages:
       magic-string: 0.26.3
       mkdirp: 1.0.4
       mkdist: 0.3.13_typescript@4.8.3
-      mlly: 0.5.15
+      mlly: 0.5.16
       mri: 1.2.0
       pathe: 0.3.8
       pkg-types: 0.3.4

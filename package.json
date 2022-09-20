@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "enhanced-resolve": "^5.10.0",
-    "mlly": "^0.5.15",
+    "mlly": "^0.5.16",
     "pathe": "^0.3.8",
     "ufo": "^0.8.5"
   },
