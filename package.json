@@ -33,7 +33,7 @@
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@types/node": "^18.11.8",
-    "@vitest/coverage-c8": "^0.24.3",
+    "@vitest/coverage-c8": "^0.24.4",
     "allowlist": "^0.1.1",
     "c8": "^7.12.0",
     "eslint": "^8.26.0",
@@ -42,7 +42,7 @@
     "typescript": "^4.8.4",
     "unbuild": "^0.9.4",
     "vite": "^3.2.2",
-    "vitest": "^0.24.3",
+    "vitest": "^0.24.4",
     "webpack": "^5.74.0"
   },
   "build": {
