@@ -13,7 +13,7 @@ specifiers:
   rollup: ^3.3.0
   standard-version: ^9.3.2
   typescript: ^4.8.4
-  ufo: ^0.8.6
+  ufo: ^1.0.0
   unbuild: ^0.9.4
   vite: ^3.2.3
   vitest: ^0.25.2
@@ -23,7 +23,7 @@ dependencies:
   enhanced-resolve: 5.10.0
   mlly: 0.5.16
   pathe: 0.3.9
-  ufo: 0.8.6
+  ufo: 1.0.0
 
 devDependencies:
   '@nuxtjs/eslint-config-typescript': 11.0.0_rmayb2veg2btbq6mbmnyivgasy
@@ -4258,6 +4258,10 @@ packages:
 
   /ufo/0.8.6:
     resolution: {integrity: sha512-fk6CmUgwKCfX79EzcDQQpSCMxrHstvbLswFChHS0Vump+kFkw7nJBfTZoC1j0bOGoY9I7R3n2DGek5ajbcYnOw==}
+
+  /ufo/1.0.0:
+    resolution: {integrity: sha512-DRty0ZBNlJ2R59y4mEupJRKLbkLQsc4qtxjpQv78AwEDuBkaUogMc2LkeqW3HddFlw6NwnXYfdThEZOiNgkmmQ==}
+    dev: false
 
   /uglify-js/3.16.0:
     resolution: {integrity: sha512-FEikl6bR30n0T3amyBh3LoiBdqHRy/f4H80+My34HOesOKyHfOsxAPAxOoqC0JUnC1amnO0IwkYC3sko51caSw==}

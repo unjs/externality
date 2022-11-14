@@ -28,7 +28,7 @@
     "enhanced-resolve": "^5.10.0",
     "mlly": "^0.5.16",
     "pathe": "^0.3.9",
-    "ufo": "^0.8.6"
+    "ufo": "^1.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
