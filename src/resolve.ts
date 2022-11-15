@@ -1,12 +1,12 @@
-import { fileURLToPath } from 'url'
-import { promisify } from 'util'
-import { hasProtocol } from 'ufo'
-import enhancedResolve from 'enhanced-resolve'
-import { isNodeBuiltin } from 'mlly'
-import type { ResolveOptions as EnhancedResolveOptions } from 'enhanced-resolve'
-import { getType } from './utils'
+import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
+import { hasProtocol } from "ufo";
+import enhancedResolve from "enhanced-resolve";
+import { isNodeBuiltin } from "mlly";
+import type { ResolveOptions as EnhancedResolveOptions } from "enhanced-resolve";
+import { getType } from "./utils";
 
-export type ModuleType = 'commonjs' | 'module' | 'unknown'
+export type ModuleType = "commonjs" | "module" | "unknown"
 
 export interface ResolveOptions extends Partial<EnhancedResolveOptions> {
   /**
@@ -24,58 +24,58 @@ export interface ResolvedId {
 }
 
 const DefaultResolveOptions: ResolveOptions = {
-  extensions: ['.ts', '.mjs', '.cjs', '.js', '.json'],
-  type: 'commonjs'
-}
+  extensions: [".ts", ".mjs", ".cjs", ".js", ".json"],
+  type: "commonjs"
+};
 
-export async function resolveId (id: string, base: string = '.', opts: ResolveOptions = {}): Promise<ResolvedId> {
-  opts = { ...DefaultResolveOptions, ...opts }
+export async function resolveId (id: string, base: string = ".", options: ResolveOptions = {}): Promise<ResolvedId> {
+  options = { ...DefaultResolveOptions, ...options };
 
   // Set condition names based on resolve type
-  if (!opts.conditionNames) {
-    opts.conditionNames = [opts.type === 'commonjs' ? 'require' : 'import']
+  if (!options.conditionNames) {
+    options.conditionNames = [options.type === "commonjs" ? "require" : "import"];
   }
 
   if (isNodeBuiltin(id)) {
     return {
-      id: id.replace(/^node:/, ''),
+      id: id.replace(/^node:/, ""),
       path: id,
-      type: opts.type,
+      type: options.type,
       external: true
-    }
+    };
   }
 
   // Normalize id with file protocol
-  if (id.startsWith('file:/')) {
+  if (id.startsWith("file:/")) {
     // is file URL
-    id = fileURLToPath(id)
+    id = fileURLToPath(id);
   }
 
   if (hasProtocol(id)) {
-    const url = new URL(id)
+    const url = new URL(id);
     return {
       id: url.href,
       path: url.pathname,
-      type: getType(id, opts.type),
+      type: getType(id, options.type),
       external: true
-    }
+    };
   }
 
   //  The argument 'path' must be a string or Uint8Array without null bytes.
-  if (base.includes('\x00')) {
-    base = opts.roots?.[0] || '.'
+  if (base.includes("\u0000")) {
+    base = options.roots?.[0] || ".";
   }
 
   // https://github.com/webpack/enhanced-resolve
   const _resolve: (base: string, id: string) =>
-    Promise<string> = promisify(enhancedResolve.create(opts))
+    Promise<string> = promisify(enhancedResolve.create(options));
 
   // TODO: leverage shared cache
-  const resolvedModule = await _resolve(base, id)
+  const resolvedModule = await _resolve(base, id);
 
   return {
     id,
     path: resolvedModule,
-    type: getType(resolvedModule, 'unknown')
-  }
+    type: getType(resolvedModule, "unknown")
+  };
 }

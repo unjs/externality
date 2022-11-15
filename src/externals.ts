@@ -1,8 +1,8 @@
-import { extname } from 'pathe'
-import { isValidNodeImport } from 'mlly'
-import type { ResolveOptions } from './resolve'
-import { getProtocol, Matcher, matches, toMatcher } from './utils'
-import { resolveId } from './resolve'
+import { extname } from "pathe";
+import { isValidNodeImport } from "mlly";
+import type { ResolveOptions } from "./resolve";
+import { getProtocol, Matcher, matches, toMatcher } from "./utils";
+import { resolveId } from "./resolve";
 
 export interface ExternalsOptions {
   /**
@@ -42,7 +42,7 @@ export const ExternalsDefaults: ExternalsOptions = {
   inline: [
     // Rollup
     // eslint-disable-next-line no-control-regex
-    /\x00/,
+    /\u0000/,
     // Webpack
     /^!/,
     /^-!/,
@@ -51,67 +51,67 @@ export const ExternalsDefaults: ExternalsOptions = {
     /\?/
   ],
   external: [],
-  externalProtocols: ['node', 'file', 'data'],
-  externalExtensions: ['.js', '.mjs', '.cjs', '.node'],
+  externalProtocols: ["node", "file", "data"],
+  externalExtensions: [".js", ".mjs", ".cjs", ".node"],
   resolve: {},
   detectInvalidNodeImports: true
-}
+};
 
-export async function isExternal (id: string, importer: string, opts: ExternalsOptions = {}): Promise<null | { id: string, external: true }> {
+export async function isExternal (id: string, importer: string, options: ExternalsOptions = {}): Promise<null | { id: string, external: true }> {
   // Apply defaults
-  opts = { ...ExternalsDefaults, ...opts }
+  options = { ...ExternalsDefaults, ...options };
 
-  const inlineMatchers = opts.inline.map(toMatcher)
-  const externalMatchers = opts.external.map(toMatcher)
+  const inlineMatchers = options.inline.map(p => toMatcher(p as any));
+  const externalMatchers = options.external.map(p => toMatcher(p as any));
 
   // Create context for matchers
-  const ctx = { opts, id, resolved: null }
+  const context = { opts: options, id, resolved: null };
 
   // Inline filter on original id
-  if (!id || matches(id, inlineMatchers, ctx)) {
-    return null
+  if (!id || matches(id, inlineMatchers, context)) {
+    return null;
   }
 
   // Inline not allowed protocols
-  const proto = getProtocol(id)
-  if (proto && !opts.externalProtocols.includes(proto)) {
-    return null
+  const proto = getProtocol(id);
+  if (proto && !options.externalProtocols.includes(proto)) {
+    return null;
   }
 
-  if (proto === 'data') {
-    return { id, external: true }
+  if (proto === "data") {
+    return { id, external: true };
   }
 
   // Resolve id
-  const r = ctx.resolved = await resolveId(id, importer, opts.resolve).catch((_err) => {
-    return { id, path: id, external: null }
-  })
+  const r = context.resolved = await resolveId(id, importer, options.resolve).catch(() => {
+    return { id, path: id, external: null };
+  });
 
   // Inline not allowed extensions
-  const idExt = extname(r.path)
-  if (idExt && !opts.externalExtensions.includes(idExt)) {
-    return null
+  const idExtension = extname(r.path);
+  if (idExtension && !options.externalExtensions.includes(idExtension)) {
+    return null;
   }
 
   // Inline filter on resolved id and path
-  if (matches(r.id, inlineMatchers, ctx) || matches(r.path, inlineMatchers, ctx)) {
-    return null
+  if (matches(r.id, inlineMatchers, context) || matches(r.path, inlineMatchers, context)) {
+    return null;
   }
 
   // Check if resolved is external
   if (
     r.external ||
-    matches(id, externalMatchers, ctx) ||
-    matches(r.id, externalMatchers, ctx) ||
-    matches(r.path, externalMatchers, ctx)
+    matches(id, externalMatchers, context) ||
+    matches(r.id, externalMatchers, context) ||
+    matches(r.path, externalMatchers, context)
   ) {
     // Inline invalid node imports
-    if (opts.detectInvalidNodeImports && !await isValidNodeImport(r.path)) {
-      return null
+    if (options.detectInvalidNodeImports && !await isValidNodeImport(r.path)) {
+      return null;
     }
 
-    return { id: r.id, external: true }
+    return { id: r.id, external: true };
   }
 
-  return null
+  return null;
 }

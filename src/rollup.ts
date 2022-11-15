@@ -1,11 +1,11 @@
-import type { Plugin } from 'rollup'
-import { ExternalsOptions, isExternal } from './externals'
+import type { Plugin } from "rollup";
+import { ExternalsOptions, isExternal } from "./externals";
 
-export function rollupExternals (opts: ExternalsOptions): Plugin {
+export function rollupExternals (options: ExternalsOptions): Plugin {
   return {
-    name: 'node-externals',
+    name: "node-externals",
     resolveId (id, importer) {
-      return isExternal(id, importer, opts)
+      return isExternal(id, importer, options);
     }
-  }
+  };
 }

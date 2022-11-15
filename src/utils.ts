@@ -1,39 +1,39 @@
-import type { ModuleType } from './resolve'
+import type { ModuleType } from "./resolve";
 
-export type Matcher<T = any> = RegExp | ((input: string, ctx?: T) => boolean)
+export type Matcher<T = any> = RegExp | ((input: string, context?: T) => boolean)
 
 // 2+ letters, to exclude Windows drive letters
-const ProtocolRegex = /^(?<proto>.{2,}):.+$/
+const ProtocolRegex = /^(?<proto>.{2,}):.+$/;
 
 export function getProtocol (id: string): string | null {
-  const proto = id.match(ProtocolRegex)
-  return proto ? proto.groups.proto : null
+  const proto = id.match(ProtocolRegex);
+  return proto ? proto.groups.proto : null;
 }
 
-export function matches <T = any> (input: string, matchers: Matcher<T>[], ctx?: T) {
+export function matches <T = any> (input: string, matchers: Matcher<T>[], context?: T) {
   return matchers.some((matcher) => {
     if (matcher instanceof RegExp) {
-      return matcher.test(input)
+      return matcher.test(input);
     }
-    if (typeof matcher === 'function') {
-      return matcher(input, ctx)
+    if (typeof matcher === "function") {
+      return matcher(input, context);
     }
-    return false
-  })
+    return false;
+  });
 }
 
 /* eslint-disable no-redeclare */
 export function toMatcher (pattern: string): RegExp
 export function toMatcher<T> (pattern: Matcher<T>): Matcher<T>
 export function toMatcher (pattern: any) {
-  if (typeof pattern !== 'string') { return pattern }
+  if (typeof pattern !== "string") { return pattern; }
 
-  pattern = pattern.replace(/\//g, '[\\\\/+]')
-  return new RegExp(`([\\/]|^)${pattern}(@[^\\/]*)?([\\/](?!node_modules)|$)`)
+  pattern = pattern.replace(/\//g, "[\\\\/+]");
+  return new RegExp(`([\\/]|^)${pattern}(@[^\\/]*)?([\\/](?!node_modules)|$)`);
 }
 
-export function getType (id: string, fallback: ModuleType = 'commonjs'): ModuleType {
-  if (id.endsWith('.cjs')) { return 'commonjs' }
-  if (id.endsWith('.mjs')) { return 'module' }
-  return fallback
+export function getType (id: string, fallback: ModuleType = "commonjs"): ModuleType {
+  if (id.endsWith(".cjs")) { return "commonjs"; }
+  if (id.endsWith(".mjs")) { return "module"; }
+  return fallback;
 }
