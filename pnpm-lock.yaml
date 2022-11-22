@@ -2,10 +2,10 @@ lockfileVersion: 5.4
 
 specifiers:
   '@types/node': ^18.11.9
-  '@vitest/coverage-c8': ^0.25.2
+  '@vitest/coverage-c8': ^0.25.3
   allowlist: ^0.1.1
   c8: ^7.12.0
-  enhanced-resolve: ^5.10.0
+  enhanced-resolve: ^5.11.0
   eslint: ^8.28.0
   eslint-config-unjs: ^0.0.2
   mlly: ^1.0.0
@@ -16,18 +16,18 @@ specifiers:
   ufo: ^1.0.0
   unbuild: ^0.9.4
   vite: ^3.2.4
-  vitest: ^0.25.2
+  vitest: ^0.25.3
   webpack: ^5.75.0
 
 dependencies:
-  enhanced-resolve: 5.10.0
+  enhanced-resolve: 5.11.0
   mlly: 1.0.0
   pathe: 1.0.0
   ufo: 1.0.0
 
 devDependencies:
   '@types/node': 18.11.9
-  '@vitest/coverage-c8': 0.25.2
+  '@vitest/coverage-c8': 0.25.3
   allowlist: 0.1.1
   c8: 7.12.0
   eslint: 8.28.0
@@ -37,7 +37,7 @@ devDependencies:
   typescript: 4.9.3
   unbuild: 0.9.4
   vite: 3.2.4_@types+node@18.11.9
-  vitest: 0.25.2
+  vitest: 0.25.3
   webpack: 5.75.0
 
 packages:
@@ -683,11 +683,11 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitest/coverage-c8/0.25.2:
-    resolution: {integrity: sha512-qKsiUJh3bjbB5Q229CbxEWCqiDBwvIrcZ9OOuQdMEC0pce3/LlTUK3+K3hd7WqAYEbbiqXfC5MVMKHZkV82PgA==}
+  /@vitest/coverage-c8/0.25.3:
+    resolution: {integrity: sha512-+tmrB3E7pZTSM+aWKzLk0FpyyaQOoRQf0594hHp+E3Kk0tiFONiEFYf7+9a1Z+C2ffU/0w6KvyBjpNPdashMrg==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.25.2
+      vitest: 0.25.3
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -1487,8 +1487,8 @@ packages:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
     dev: true
 
-  /enhanced-resolve/5.10.0:
-    resolution: {integrity: sha512-T0yTFjdpldGY8PmuXXR0PyQ1ufZpEGiHVrp7zHKB7jdR4qlmZHhONVM5AQOAWXuF/w3dnHbEQVrNptJgt7F+cQ==}
+  /enhanced-resolve/5.11.0:
+    resolution: {integrity: sha512-0Gcraf7gAJSQoPg+bTSXNhuzAYtXqLc4C011vb8S3B8XUSEkGYNBk20c68X9291VF4vvsCD8SPkr6Mza+DwU+g==}
     engines: {node: '>=10.13.0'}
     dependencies:
       graceful-fs: 4.2.10
@@ -2045,7 +2045,7 @@ packages:
       eslint-plugin-import: '*'
     dependencies:
       debug: 4.3.4
-      enhanced-resolve: 5.10.0
+      enhanced-resolve: 5.11.0
       eslint: 8.28.0
       eslint-plugin-import: 2.26.0_gnyru2vrre7capjunjd2xdw5vu
       get-tsconfig: 4.2.0
@@ -4375,8 +4375,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.25.2:
-    resolution: {integrity: sha512-qqkzfzglEFbQY7IGkgSJkdOhoqHjwAao/OrphnHboeYHC5JzsVFoLCaB2lnAy8krhj7sbrFTVRApzpkTOeuDWQ==}
+  /vitest/0.25.3:
+    resolution: {integrity: sha512-/UzHfXIKsELZhL7OaM2xFlRF8HRZgAHtPctacvNK8H4vOcbJJAMEgbWNGSAK7Y9b1NBe5SeM7VTuz2RsTHFJJA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -4400,7 +4400,7 @@ packages:
       '@types/chai': 4.3.3
       '@types/chai-subset': 1.3.3
       '@types/node': 18.11.9
-      acorn: 8.8.0
+      acorn: 8.8.1
       acorn-walk: 8.2.0
       chai: 4.3.6
       debug: 4.3.4
@@ -4456,7 +4456,7 @@ packages:
       acorn-import-assertions: 1.8.0_acorn@8.8.0
       browserslist: 4.20.3
       chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.10.0
+      enhanced-resolve: 5.11.0
       es-module-lexer: 0.9.3
       eslint-scope: 5.1.1
       events: 3.3.0
