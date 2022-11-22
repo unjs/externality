@@ -26,14 +26,14 @@
     "test": "pnpm lint && vitest run"
   },
   "dependencies": {
-    "enhanced-resolve": "^5.10.0",
+    "enhanced-resolve": "^5.11.0",
     "mlly": "^1.0.0",
     "pathe": "^1.0.0",
     "ufo": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
-    "@vitest/coverage-c8": "^0.25.2",
+    "@vitest/coverage-c8": "^0.25.3",
     "allowlist": "^0.1.1",
     "c8": "^7.12.0",
     "eslint": "^8.28.0",
@@ -43,7 +43,7 @@
     "typescript": "^4.9.3",
     "unbuild": "^0.9.4",
     "vite": "^3.2.4",
-    "vitest": "^0.25.2",
+    "vitest": "^0.25.3",
     "webpack": "^5.75.0"
   },
   "build": {
