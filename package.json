@@ -26,7 +26,7 @@
     "test": "pnpm lint && vitest run"
   },
   "dependencies": {
-    "enhanced-resolve": "^5.11.0",
+    "enhanced-resolve": "^5.12.0",
     "mlly": "^1.0.0",
     "pathe": "^1.0.0",
     "ufo": "^1.0.0"
