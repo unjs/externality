@@ -5,7 +5,7 @@ specifiers:
   '@vitest/coverage-c8': ^0.25.3
   allowlist: ^0.1.1
   c8: ^7.12.0
-  enhanced-resolve: ^5.11.0
+  enhanced-resolve: ^5.12.0
   eslint: ^8.28.0
   eslint-config-unjs: ^0.0.2
   mlly: ^1.0.0
@@ -20,7 +20,7 @@ specifiers:
   webpack: ^5.75.0
 
 dependencies:
-  enhanced-resolve: 5.11.0
+  enhanced-resolve: 5.12.0
   mlly: 1.0.0
   pathe: 1.0.0
   ufo: 1.0.0
@@ -1487,8 +1487,8 @@ packages:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
     dev: true
 
-  /enhanced-resolve/5.11.0:
-    resolution: {integrity: sha512-0Gcraf7gAJSQoPg+bTSXNhuzAYtXqLc4C011vb8S3B8XUSEkGYNBk20c68X9291VF4vvsCD8SPkr6Mza+DwU+g==}
+  /enhanced-resolve/5.12.0:
+    resolution: {integrity: sha512-QHTXI/sZQmko1cbDoNAa3mJ5qhWUUNAq3vR0/YiD379fWQrcfuoX1+HW2S0MTt7XmoPLapdaDKUtelUSPic7hQ==}
     engines: {node: '>=10.13.0'}
     dependencies:
       graceful-fs: 4.2.10
@@ -2045,7 +2045,7 @@ packages:
       eslint-plugin-import: '*'
     dependencies:
       debug: 4.3.4
-      enhanced-resolve: 5.11.0
+      enhanced-resolve: 5.12.0
       eslint: 8.28.0
       eslint-plugin-import: 2.26.0_gnyru2vrre7capjunjd2xdw5vu
       get-tsconfig: 4.2.0
@@ -4456,7 +4456,7 @@ packages:
       acorn-import-assertions: 1.8.0_acorn@8.8.0
       browserslist: 4.20.3
       chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.11.0
+      enhanced-resolve: 5.12.0
       es-module-lexer: 0.9.3
       eslint-scope: 5.1.1
       events: 3.3.0
