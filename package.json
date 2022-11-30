@@ -41,7 +41,7 @@
     "rollup": "^3.5.0",
     "standard-version": "^9.3.2",
     "typescript": "^4.9.3",
-    "unbuild": "^0.9.4",
+    "unbuild": "^1.0.1",
     "vite": "^3.2.4",
     "vitest": "^0.25.3",
     "webpack": "^5.75.0"
