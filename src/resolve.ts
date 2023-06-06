@@ -28,7 +28,7 @@ const DefaultResolveOptions: ResolveOptions = {
   type: "commonjs"
 };
 
-export async function resolveId (id: string, base: string = ".", options: ResolveOptions = {}): Promise<ResolvedId> {
+export async function resolveId (id: string, base = ".", options: ResolveOptions = {}): Promise<ResolvedId> {
   options = { ...DefaultResolveOptions, ...options };
 
   // Set condition names based on resolve type
