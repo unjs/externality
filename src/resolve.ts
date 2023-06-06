@@ -68,14 +68,14 @@ export async function resolveId (id: string, base = ".", options: ResolveOptions
 
   // https://github.com/webpack/enhanced-resolve
   const _resolve: (base: string, id: string) =>
-    Promise<string> = promisify(enhancedResolve.create(options));
+    Promise<string | false> = promisify(enhancedResolve.create(options));
 
   // TODO: leverage shared cache
   const resolvedModule = await _resolve(base, id);
 
   return {
     id,
-    path: resolvedModule,
-    type: getType(resolvedModule, "unknown")
+    path: resolvedModule || id,
+    type: getType(resolvedModule || id, "unknown")
   };
 }
