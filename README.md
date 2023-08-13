@@ -72,7 +72,7 @@ await isExternal('my-lib', '.')
 [npm-downloads-src]: https://img.shields.io/npm/dm/externality?style=flat-square
 [npm-downloads-href]: https://npmjs.com/package/externality
 
-[github-actions-src]: https://img.shields.io/github/workflow/status/unjs/externality/ci/main?style=flat-square
+[github-actions-src]: https://img.shields.io/github/actions/workflow/status/unjs/externality/ci.yml?branch=main&style=flat-square
 [github-actions-href]: https://github.com/unjs/externality/actions?query=workflow%3Aci
 
 [codecov-src]: https://img.shields.io/codecov/c/gh/unjs/externality/main?style=flat-square
