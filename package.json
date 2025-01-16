@@ -33,7 +33,7 @@
     "ufo": "^1.1.2"
   },
   "devDependencies": {
-    "@types/node": "^20.2.5",
+    "@types/node": "^22.10.7",
     "@vitest/coverage-c8": "^0.31.1",
     "allowlist": "^0.1.1",
     "c8": "^9.1.0",
